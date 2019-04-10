@@ -5,18 +5,13 @@ import { signin } from '../redux/async/auth';
 import LoginForm from '../components/partials/loginForm';
 
 class Login extends Component {
-
-  constructor(props) {
-    super(props);
-  }
-
+  
   handleAuthentication(credentials) {
     const { signin } = this.props;
     signin(credentials);
   } 
 
   render() {
-    console.log(this.props);
     return (
       <Container>
         <Row className="justify-content-center mt-5">

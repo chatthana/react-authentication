@@ -15,7 +15,8 @@ class LoginForm extends Component {
     super(props);
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      errors: {}
     }
   }
 

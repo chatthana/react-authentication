@@ -1,5 +1,10 @@
-# React Authentication
-Sample React (Server-Side Render only) with authentication
+# React w/ Authentication
+A sample React application crafted along with the authentication mechanism
+
+## Forewords
+This is a boilerplate for React application that utilises JWT-Based authentication. The boilerplate is shipped with the
+fake backend for JWT generation and verification. Thus, you can customise these features to authenticate using your external
+web services (API)
 
 ## Libraries used
 1. Create React App (CRA)

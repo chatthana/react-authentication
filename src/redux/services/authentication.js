@@ -2,24 +2,51 @@ import jwt from 'jsonwebtoken';
 
 const jwtSecret = 'g-/veronica';
 
-export const authenticate = credentials => {
+const users = [
+  {
+    id: 1,
+    email: 'test001@dummy.com',
+    password: '123456'
+  },
+  {
+    id: 2,
+    email: 'test002@dummy.com',
+    password: '123456'
+  },
+  {
+    id: 3,
+    email: 'test003@dummy.com',
+    password: '123456'
+  }
+];
+
+const getUser = credentials => {
   const { email, password } = credentials;
 
-  return new Promise((resolve, rejecy) => {
-    const payload = {
-      user: 'testuser',
-      role: 'system-developer',
-      email,
-      createAt: Date.now()
-    };
+  for(let i in users) {
+    if(users[i].email === email && users[i].password === password) {
+      return users[i];
+    }
+  }
 
-    const token = jwt.sign(payload, jwtSecret);
+  return null;
+}
 
-    payload.token = token;
+export const authenticate = credentials => {
+  return new Promise((resolve, reject) => {
+    const user = getUser(credentials);
+    if(user) {
+      const payload = {
+        username: user.email,
+        role: 'system-developer',
+        email: user.email
+      };
 
-    setTimeout(() => {
+      payload.token = jwt.sign(payload, jwtSecret);
       resolve(payload);
-    }, 2000);
+    } else {
+      reject('Invalid credentials! Please try again');
+    }
 
   });
 }

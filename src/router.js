@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import ApplicationLayout from './components/layouts/app';
 import { connect } from 'react-redux';
 import HomePage from './pages/Home';
 import AboutPage from './pages/About';
@@ -21,11 +22,13 @@ class EntryPointRouter extends Component {
   render() {
     const { authToken } = this.props;
     return (
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route exact path="/login" component={LoginPage} />
-        <ProtectedRoute exact path="/about" component={AboutPage} authToken={authToken} />  
-      </Switch>
+      <ApplicationLayout>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/login" component={LoginPage} />
+          <ProtectedRoute exact path="/about" component={AboutPage} authToken={authToken} />  
+        </Switch>
+      </ApplicationLayout>
     )
   }
 }
