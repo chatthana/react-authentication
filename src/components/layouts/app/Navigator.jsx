@@ -30,7 +30,7 @@ export default class Navigator extends Component {
     return (
       <Navbar dark color="dark" expand="md">
         <Container>
-          <NavbarBrand href="/">React Authenticable <span style={{fontSize: '0.55em'}}>by Squarevelvet</span></NavbarBrand>
+          <NavbarBrand href="/">React Authenticable <span style={{fontSize: '0.55em'}}>by Square<span style={{ color: 'red' }}>velvet</span></span></NavbarBrand>
           <NavbarToggler onClick={this.toggle.bind(this)} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="ml-auto" navbar>

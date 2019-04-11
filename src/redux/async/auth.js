@@ -9,7 +9,7 @@ import { authenticate } from '../services/authentication';
  * - SIGNIN_REQUEST
  * - SIGNIN_SUCCESS
  * - SIGNIN_FAILURE
- * @param {object} credentials 
+ * @param {object} credentials
  */
 
 export const signin = credentials => {
@@ -22,9 +22,8 @@ export const signin = credentials => {
       dispatch(signin_success(user));
       dispatch(push('/'));
     }).catch(error => {
-      console.log(error_notification);
       dispatch(error_notification(error));
-      dispatch(signin_failure());
+      dispatch(signin_failure(error));
     });
   };
 }
