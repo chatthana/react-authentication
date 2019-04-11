@@ -9,27 +9,32 @@ class Alert extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      visible: true
+      visible: false
     };
   }
 
-  toggleVisibility() {
-    const { clearMessage } = this.props;
-    clearMessage();
+  displayNotification(type, message) {
+    this.setState({ visible: true, type, message }, () => {
+      setTimeout(() => { this.setState({ visible: false }); }, 2000)
+    });
   }
 
   render() {
 
-    const { alert } = this.props;
+    const { alert, clearMessage } = this.props;
+    const { type, message, visible } = this.state;
+
+    if (alert.message) {
+      this.displayNotification(alert.type, alert.message);
+      clearMessage();
+    }
 
     return (
       <AlertStyle>
-        { alert.message &&
-          <Toast>
-            <ToastHeader toggle={this.toggleVisibility.bind(this)} icon={alert.type}>Notification</ToastHeader>
-            <ToastBody>{alert.message}</ToastBody>
-          </Toast>
-        }
+        <Toast isOpen={visible}>
+          <ToastHeader icon={type}>Notification</ToastHeader>
+          <ToastBody>{message}</ToastBody>
+        </Toast>
       </AlertStyle>
     );
   }
