@@ -8,6 +8,7 @@ import {
   CardBody,
   Button
 } from 'reactstrap';
+import { toast } from 'react-toastify';
 
 class LoginForm extends Component {
 
@@ -35,6 +36,7 @@ class LoginForm extends Component {
       email,
       password
     };
+    toast.success('Successfully Authenticated');
     onAuthenticate(credentials);
   }
 

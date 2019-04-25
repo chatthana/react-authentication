@@ -3,16 +3,17 @@ import EntryPointRouter from './router';
 import { Provider } from 'react-redux';
 import intiailiseReduxStore, { history } from './redux/store';
 import { ConnectedRouter } from 'connected-react-router';
-import Alert from './components/partials/alert';
+import { ToastContainer, toast } from 'react-toastify';
 
 const store = intiailiseReduxStore();
+toast.configure();
 
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
         <ConnectedRouter history={history}>
-          <Alert />
+          <ToastContainer />
           <EntryPointRouter />
         </ConnectedRouter>
       </Provider>
